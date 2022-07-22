@@ -7,7 +7,6 @@ require "pry"
 require "colorize"
 
 # use require_relative to load up our code in the lib directory
-require_relative "../lib/helper.rb"
 require_relative "../lib/savable.rb"
 require_relative "../lib/dog.rb"
 require_relative "../lib/walk.rb"
