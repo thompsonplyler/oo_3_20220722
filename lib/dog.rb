@@ -9,7 +9,9 @@ class Dog < Savable
     Feeding.create({dog:self, time: Time.now})
   end
 
-
+  def dog_walks
+    DogWalk.all.select{|dw| dw.dog == self}
+  end
 
   def feedings 
     # look at all feeding instances. Return the ones that belong to the instance we are calling feedings on. 
@@ -17,7 +19,7 @@ class Dog < Savable
   end 
 
   def walks
-    DogWalk.all.select{|dw| dw.dog == self}
+    dog_walks.walks
   end
 
 

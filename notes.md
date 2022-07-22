@@ -1,28 +1,34 @@
 ### Announcements
 
-- Tom will be giving more lab help tonight (Tom's homeroom, 6pm - 7pm EST)
-
 ### SWBAT
 
-- [x] Observe how to build class methods
-- [x] Explain the difference between a class method and an instance method
-- [x] Explain self
-- [x] Explain what private methods are
-- [x] Explain inheritance in OO
-- [x] Observe inheritance in OO
+- [x] Explain what a relationship is in Object Orientation
+- [x] Explain the difference between a One to Many and Many to Many relationship
+- [x] Observe how relationships are built in Ruby
+- [x] Observe how to access associated instances
 
 ### Deliverables
 
-- add an `@@all` class variable
-- add an `.all` method that retrieves all Dogs.
-- add a `#save` method that will save a dog to `@@all`
-- add a `.create` method that will create a new instance of the dog class and save it to `@@all`
-- add a `#walk` method that will mark `last_walked_at` as the current time.
-- add a `#feed` method that will mark `last_fed_at` as the current time.
-- add a private method `formatted_name` that will return the name of the dog and a message in red if they need to be walked or fed, and the name of the dog in green if they have been both walked and fed.
-- add a private method `format_time(time)` that will accept a time as an argument and return it in a human readable format using the `#strftime` method.
-- Demonstrate how we can use inheritance with a `Savable` class that defines `.all`, `.create`, `save`, and `initialize` to reuse that code in multiple classes.
-- Create a `Walk` class that inherits from `Savable` to demonstrate this in action.
+- - add a `Feeding` class to the application that inherits from `Savable`
+- add `#dog` and `#dog=` methods to the `Feeding` class to indicate a one to one relationship between the two.
+- add a `#feedings` method to the `Dog` class to indicate a one to many relationship between the two.
+- update the dog's `#feed` method so that it creates a new feeding that belongs to the dog.
+  - **To Test**: If we call feed on a dog and pass in a time as an argument, we should then be able to call `feedings` on that dog and see an associated walk at the time we passed in.
+- Implement many to many between dogs and walks:
+  - create a `DogWalk` class to manage the relationship between:
+    - a single dog and
+    - a single walk (via attr_accessors)
+  - the `Dog` class should:
+    - have a method `#dog_walks` that returns all of the dog_walks that are associated with that dog
+    - have a `#walks` methods that returns all of the walks associated with that dog's `dog_walks`
+  - The `Walk` class should:
+  - have a method `#dog_walks` that returns all of the dog_walks that are associated with that walk
+    - have a `#dogs` methods that returns all of the dogs associated with that walk's `dog_walks`
+- update the dog's `walk` method so that it:
+  - creates a walk at the current time
+  - creates a DogWalk belonging to the newly created walk and the receiving dog.
+  - returns new newly created walk
+  - **To Test**: If we call walk on a dog and pass in a time as an argument, we should then be able to call `walks` on that dog and see an associated walk at the time we passed in.
 
 ### Resources
 
@@ -30,13 +36,8 @@
 
 ### Vocabulary
 
-- class methods
-- shovel
-- instructional syntax for instance method `#method`
-- instructional syntax for class method `.method`
-- Time.now
-- private methods
-- .nil?
-- strftime
-  - [For a Good Striftime](https://www.foragoodstrftime.com/)
-- Inheritance
+- associations
+- one to one / belongs_to
+- one to many / has_many
+- many to many
+- #select method

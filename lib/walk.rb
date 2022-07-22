@@ -1,3 +1,3 @@
-class DogWalk < Savable
-    attr_accessor :time, :dog
+class Walk < Savable
+    attr_accessor :time
 end
