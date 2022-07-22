@@ -11,6 +11,7 @@ require_relative "../lib/helper_methods.rb"
 require_relative "../lib/savable.rb"
 require_relative "../lib/dog.rb"
 require_relative "../lib/walk.rb"
+require_relative "../lib/feeding.rb"
 require_relative "../lib/dog_data.rb"
 
 # add a method that will reload the lib/dog.rb file so we can 

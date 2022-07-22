@@ -1,5 +1,3 @@
-require 'pry'
-
-class Walk < Dog
-    attr_accessor :time
+class DogWalk < Savable
+    attr_accessor :time, :dog
 end

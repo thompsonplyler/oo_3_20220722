@@ -1,14 +1,23 @@
-require 'pry'
-
 class Dog < Savable
   attr_accessor :name, :age, :breed, :weight, :image_url, :last_fed, :last_walked
 
   def walk
-    self.last_walked = Time.now
+    DogWalk.create({dog:self, time: Time.now})
   end
 
   def feed
-    self.last_fed = Time.now
+    Feeding.create({dog:self, time: Time.now})
+  end
+
+
+
+  def feedings 
+    # look at all feeding instances. Return the ones that belong to the instance we are calling feedings on. 
+    Feeding.all.select{|feeding| feeding.dog == self}
+  end 
+
+  def walks
+    DogWalk.all.select{|dw| dw.dog == self}
   end
 
 
