@@ -2,7 +2,7 @@ class Dog < Savable
   attr_accessor :name, :age, :breed, :weight, :image_url, :last_fed, :last_walked
 
   def walk
-    DogWalk.create({dog:self, time: Time.now})
+    DogWalk.create({dog:self, walk: Walk.create(time: Time.now)})
   end
 
   def feed
@@ -19,7 +19,7 @@ class Dog < Savable
   end 
 
   def walks
-    dog_walks.walks
+    dog_walks.map{|dw|dw.walk}
   end
 
 
